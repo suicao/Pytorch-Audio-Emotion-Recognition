@@ -35,14 +35,18 @@ This [repo](https://github.com/ebouteillon/freesound-audio-tagging-2019#SpecMix-
 
 ### Preprocessing 
 To reproduce the Mels data, run the following command:
+
 ```python preprocess.py --train_df_path <path-to>/train_label.csv --train_dir  <path-to>/Train --test_dir  <path-to>/Public_Test --train_output_path ./data/mels_train.pkl --test_output_path ./data/mels_test.pkl```
 
 ### Training 
 To reproduce the models, run the following commands:
 
 ```python train_full.py --train_df_path <path-to>/train_label.csv --test_dir <path-to>/Public_Test/ --model m0 --logdir models_m0 --output_name preds_m0.npy```
+
 ```python train_full.py --train_df_path <path-to>/train_label.csv --test_dir <path-to>/Public_Test/ --model m2 --logdir models_m2 --output_name preds_m2.npy```
+
 ```python train_full.py --train_df_path <path-to>/train_label.csv --test_dir <path-to>/Public_Test/ --model m3 --logdir models_m3 --output_name preds_m3.npy```
+
 ```python train_full.py --train_df_path <path-to>/train_label.csv --test_dir <path-to>/Public_Test/ --model dcase --logdir models_dcase --output_name preds_dcase.npy```
 
 
