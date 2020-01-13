@@ -19,7 +19,6 @@ import torch.nn.functional as F
 from fastprogress import master_bar, progress_bar
 from torch.optim import Adam
 from torch.optim.lr_scheduler import CosineAnnealingLR
-from torch.utils.data import Dataset, DataLoader
 from torchvision.transforms import transforms
 from sklearn.model_selection import train_test_split
 import time
@@ -31,10 +30,10 @@ from utils import *
 from mixup import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--train_df_path', type=str, default="../erc/input/train_label.csv")
-parser.add_argument('--train_processed_path', type=str, default="./data/mels_train.pkl")
-parser.add_argument('--test_processed_path', type=str, default="./data/mels_test.pkl")
-parser.add_argument('--test_dir', type=str, default="../erc/input/Public_Test/Public_Test/")
+parser.add_argument('--train_df_path', type=str, default="../input/train_label.csv")
+parser.add_argument('--train_processed_path', type=str, default="../../erc2019/data/mels_train.pkl")
+parser.add_argument('--test_processed_path', type=str, default="../../erc2019/data/mels_test.pkl")
+parser.add_argument('--test_dir', type=str, default="../input/Public_Test/Public_Test/")
 parser.add_argument('--output_dir', type=str, default="./preds")
 parser.add_argument('--output_name', type=str, default="preds_tmp.npy")
 parser.add_argument('--logdir', type=str, default="./models")
@@ -73,7 +72,7 @@ model_dict = {
     "m0": Classifier,
     "m2": Classifier_M2,
     "m3": Classifier_M3,
-    "dcase": ConvNet
+    "dcase": ConvNet,
 }
 Model = model_dict[args.model]
 
@@ -103,7 +102,7 @@ splits = list(StratifiedKFold(n_splits=5, shuffle=True, random_state=SEED).split
 
 
 def train_model(x_train, y_train, train_transforms):
-    num_epochs = args.epoch
+    num_epochs = args.epochs
     batch_size = args.batch_size
     lr = 1e-3
     eta_min = 1e-5
