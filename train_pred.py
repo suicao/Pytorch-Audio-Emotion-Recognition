@@ -4,7 +4,6 @@ import pandas as pd
 from model_dcase import ConvNet
 from model_m1 import Classifier_M2, Classifier_M3
 from model_m0 import Classifier
-from model_xresnet import *
 from sklearn.model_selection import StratifiedKFold
 from joblib import load, dump
 from sklearn.metrics import accuracy_score
@@ -74,9 +73,7 @@ model_dict = {
     "m0": Classifier,
     "m2": Classifier_M2,
     "m3": Classifier_M3,
-    "dcase": ConvNet,
-    "xresnet18": xresnet18ssa,    
-    "xresnet34": xresnet34ssa
+    "dcase": ConvNet
 }
 Model = model_dict[args.model]
 
